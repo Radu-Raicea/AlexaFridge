@@ -1,0 +1,27 @@
+<h1>Ingredients</h1>
+
+<%= link_to 'New ingredient', new_ingredient_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>In Stock</th>
+  </tr>
+ 
+  <% @ingredients.each do |ingredient| %>
+    <tr>
+      <td><%= ingredient.name %></td>
+      <td>
+        <% if ingredient.in_stock %>
+          Yes
+        <% else %>
+          No
+        <% end %>
+      </td>
+
+      <td><%= link_to 'Show', ingredient_path(ingredient) %></td>
+      <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+      <td><%= link_to 'Delete', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
