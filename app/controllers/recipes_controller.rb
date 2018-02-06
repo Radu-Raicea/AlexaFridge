@@ -60,6 +60,16 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def self.menu
+    recipes = []
+    Recipe.all.each do |recipe|
+      if recipe.ingredients.find_by(in_stock: false).nil?
+        recipes << recipe.name
+      end
+    end
+    return recipes
+  end
+
   private
     def recipe_params
       params.require(:recipe).permit(:name)
