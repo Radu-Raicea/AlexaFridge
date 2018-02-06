@@ -1,27 +1,34 @@
-<h1>Ingredients</h1>
+<div class="content">
+  <h1>Ingredients</h1>
 
-<%= link_to 'New ingredient', new_ingredient_path %>
+  <%= link_to 'New ingredient', new_ingredient_path %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>In Stock</th>
-  </tr>
- 
-  <% @ingredients.each do |ingredient| %>
-    <tr>
-      <td><%= ingredient.name %></td>
-      <td>
-        <% if ingredient.in_stock %>
-          Yes
-        <% else %>
-          No
-        <% end %>
-      </td>
+  <div class="tableContent">
+    <table id="ingredients" class="display" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th width="60%">Name</th>
+          <th width="15%">In Stock</th>
+          <th></th>
+        </tr>
+      </thead>
+     
+      <% @ingredients.each do |ingredient| %>
+        <tbody>
+          <tr>
+            <td><%= link_to ingredient.name, ingredient_path(ingredient) %></td>
+            <td>
+              <% if ingredient.in_stock %>
+                Yes
+              <% else %>
+                No
+              <% end %>
+            </td>
 
-      <td><%= link_to 'Show', ingredient_path(ingredient) %></td>
-      <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-      <td><%= link_to 'Delete', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+            <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %> | <%= link_to 'Delete', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,17 +1,16 @@
-<p>
-  <strong>Name:</strong>
-  <%= @ingredient.name %>
-</p>
+<div class="content">
+  <h1><%= @ingredient.name %></h1>
 
-<p>
-  <strong>In Stock:</strong>
+  <p>
+    <strong>In Stock:</strong>
 
-  <% if @ingredient.in_stock %>
-    Yes
-  <% else %>
-    No
-  <% end %>
-</p>
+    <% if @ingredient.in_stock %>
+      Yes
+    <% else %>
+      No
+    <% end %>
+  </p>
 
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+  <%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+  <%= link_to 'Back', ingredients_path %>
+</div>

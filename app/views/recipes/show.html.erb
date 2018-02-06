@@ -1,7 +1,13 @@
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
+<div class="content">
+  <h1><%= @recipe.name %></h1>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+  <p>
+    <strong>Ingredients</strong>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <br><%= ingredient.name %>
+    <% end %>
+  </p>
+
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+  <%= link_to 'Back', recipes_path %>
+</div>

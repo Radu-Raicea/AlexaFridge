@@ -13,3 +13,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+    $('#recipes').DataTable();
+    $('#ingredients').DataTable();
+} );

@@ -1,23 +1,25 @@
-<h1>Recipes</h1>
+<div class="content">
+  <h1>Recipes</h1>
 
-<%= link_to 'New recipe', new_recipe_path %>
+  <%= link_to 'New recipe', new_recipe_path %>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
- 
-  <% @recipes.each do |recipe| %>
-    <tr>
-      <td><%= recipe.name %></td>
-
-      <% recipe.ingredients.each do |ingredient| %>
-        <td><%= ingredient.name %></td>
+  <div class="tableContent">
+    <table id="recipes" class="display" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th width="70%">Name</th>
+          <th></th>
+        </tr>
+      </thead>
+     
+      <% @recipes.each do |recipe| %>
+        <tbody>
+          <tr>
+            <td><%= link_to recipe.name, recipe_path(recipe) %></td>
+            <td><%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        </tbody>
       <% end %>
-
-      <td><%= link_to 'Show', recipe_path(recipe) %></td>
-      <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-      <td><%= link_to 'Delete', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+    </table>
+  </div>
+</div>

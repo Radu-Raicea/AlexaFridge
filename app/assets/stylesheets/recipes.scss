@@ -2,9 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.new-content {
+.content {
     display: block;
-    width: 100%;
+    width: 40%;
     text-align: center;
+    margin: 0 auto;
+}
+
+.tableContent {
+    width: 40%;
     margin: 0 auto;
 }

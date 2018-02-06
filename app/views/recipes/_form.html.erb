@@ -23,7 +23,7 @@
     <h2>Ingredients</h2>
 
     <% @ingredients.each do |ingredient| %>
-      <%= form.label ingredient.name  %>
+      <%= form.label ingredient.name %>
       <%= form.check_box "ingredients[#{ingredient.id}]", checked: (@recipe.ingredients.map(&:id).include? ingredient.id) ? true : false %>
       <br>
     <% end %>

@@ -37,16 +37,6 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
 
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-    puts @recipe.ingredients[1].nil? ? false : true
-
     if ingredients_params[:ingredients]
       ingredients = []
       ingredients_params[:ingredients].each do |id, selected|
