@@ -36,6 +36,7 @@ recipes = [
 
 model = AlexaGenerator::InteractionModel.build do |model|
   model.add_intent('AMAZON.NoIntent')
+  model.add_intent('AMAZON.YesIntent')
 
   model.add_intent(:MenuIntent) do |intent|
     intent.add_utterance_template('What can I eat')

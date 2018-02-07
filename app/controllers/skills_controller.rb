@@ -12,8 +12,14 @@ class SkillsController < ApplicationController
       message = 'Fridge is open!'
     when 'INTENT_REQUEST'
       case input.name
-      when 'MenuIntent'
-        message, session_end = MessageCreator.menu_message
+      when 'MenuIntent', 'AMAZON.YesIntent'
+        if params['session']['attributes'].nil? || params['session']['attributes']['recipes'].blank?
+          recipes = RecipesController.menu
+        else
+          recipes = params['session']['attributes']['recipes']
+        end
+        output.add_session_attribute('recipes', recipes[3..-1]) unless recipes.nil?
+        message, session_end = MessageCreator.menu_message(recipes)
       when 'IngredientsForIntent'
         message, session_end = MessageCreator.ingredients_for_message(input)
       when 'BoughtIngredientIntent'
@@ -35,12 +41,22 @@ class SkillsController < ApplicationController
 end
 
 class MessageCreator
-  def self.menu_message
-    recipes = RecipesController.menu
+  def self.menu_message(recipes)
     if recipes.empty?
       return 'You don\'t have enough ingredients to make anything!', false
-    elsif !recipes.empty?
-      return "You could make #{recipes[0]}", false
+    elsif recipes.length == 1
+      return "You could make #{recipes.first}", false
+    elsif recipes.length > 1
+      message = "You could make"
+      recipes[0,3].each do |recipe|
+        if recipe != recipes[0,3].last
+          message << " #{recipe},"
+        else
+          message << " or #{recipe}."
+        end
+      end
+      message << ' Do you want other options?' if recipes.length > 3
+      return message, false
     else
       return 'Something went wrong.', true
     end
