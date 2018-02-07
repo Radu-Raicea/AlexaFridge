@@ -18,6 +18,8 @@ class SkillsController < ApplicationController
         message, session_end = self.bought_ingredient_message(input)
       when 'RanOutIngredientIntent'
         message, session_end = self.ran_out_ingredient_message(input)
+      when 'HaveIngredientIntent'
+        message, session_end = self.have_ingredient_message(input)
       when 'CloseFridgeIntent', 'AMAZON.NoIntent'
         message, session_end = 'Closing fridge', true
       end
@@ -67,6 +69,21 @@ class SkillsController < ApplicationController
       return "You have no more #{name}!", false
     elsif !ingredient.in_stock
       return "You already have no more #{name}!", false
+    else
+      return 'Something went wrong.', true
+    end
+  end
+
+  def have_ingredient_message(input)
+    name = input.slots['Ingredient']['value']
+    ingredient = Ingredient.find_by(name: name)
+
+    if ingredient.nil?
+      return "There is no ingredient named #{name}.", false
+    elsif ingredient.in_stock
+      return "You have #{name}!", false
+    elsif !ingredient.in_stock
+      return "You don't have #{name}!", false
     else
       return 'Something went wrong.', true
     end

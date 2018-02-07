@@ -45,6 +45,7 @@ model = AlexaGenerator::InteractionModel.build do |model|
       slot.add_bindings(*ingredients)
     end
     intent.add_utterance_template('I bought {Ingredient}')
+    intent.add_utterance_template('I have {Ingredient}')
     intent.add_utterance_template('Add {Ingredient}')
   end
 
@@ -53,8 +54,16 @@ model = AlexaGenerator::InteractionModel.build do |model|
       slot.add_bindings(*ingredients)
     end
     intent.add_utterance_template('I ran out of {Ingredient}')
+    intent.add_utterance_template('I don\'t have {Ingredient}')
     intent.add_utterance_template('There\'s no more {Ingredient}')
     intent.add_utterance_template('Remove {Ingredient}')
+  end
+
+  model.add_intent(:HaveIngredientIntent) do |intent|
+    intent.add_slot(:Ingredient, 'AMAZON.LITERAL') do |slot|
+      slot.add_bindings(*ingredients)
+    end
+    intent.add_utterance_template('Do I have {Ingredient}')
   end
 
   model.add_intent(:CloseFridgeIntent) do |intent|
@@ -69,4 +78,5 @@ puts JSON.pretty_generate(model.intent_schema)
 puts model.sample_utterances(:MenuIntent)
 puts model.sample_utterances(:BoughtIngredientIntent)
 puts model.sample_utterances(:RanOutIngredientIntent)
+puts model.sample_utterances(:HaveIngredientIntent)
 puts model.sample_utterances(:CloseFridgeIntent)
