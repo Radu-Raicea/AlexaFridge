@@ -29,7 +29,11 @@ class SkillsController < ApplicationController
       when 'HaveIngredientIntent'
         message, session_end = MessageCreator.have_ingredient_message(input)
       when 'CloseFridgeIntent', 'AMAZON.NoIntent'
-        message, session_end = 'Closing fridge', true
+        if params['session']['attributes'].nil? || params['session']['attributes']['recipes'].blank?
+          message, session_end = 'Closing fridge', true
+        else
+          message, session_end = 'Ok.', false
+        end
       end
     when 'SESSION_ENDED_REQUEST'
       message = nil
