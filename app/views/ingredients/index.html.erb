@@ -16,7 +16,7 @@
       <% @ingredients.each do |ingredient| %>
         <tbody>
           <tr>
-            <td><%= link_to ingredient.name, ingredient_path(ingredient) %></td>
+            <td><%= link_to ingredient.name.capitalize, ingredient_path(ingredient) %></td>
             <td>
               <% if ingredient.in_stock %>
                 Yes

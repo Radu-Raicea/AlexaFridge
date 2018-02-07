@@ -1,10 +1,10 @@
 <div class="content">
-  <h1><%= @recipe.name %></h1>
+  <h1><%= @recipe.name.capitalize %></h1>
 
   <p>
     <strong>Ingredients</strong>
     <% @recipe.ingredients.each do |ingredient| %>
-      <br><%= ingredient.name %>
+      <br><%= ingredient.name.capitalize %>
     <% end %>
   </p>
 

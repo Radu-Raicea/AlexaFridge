@@ -7,34 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ingr = Ingredient.create([
-    { name: 'Butter', in_stock: false },
-    { name: 'Bagel', in_stock: false },
-    { name: 'Sliced Bread', in_stock: false },
-    { name: 'English Muffin', in_stock: false },
-    { name: 'Banana', in_stock: false },
-    { name: 'Avocado', in_stock: false },
-    { name: 'Orange', in_stock: false },
-    { name: 'Mango', in_stock: false },
-    { name: 'Raspberries', in_stock: false },
-    { name: 'Strawberries', in_stock: false },
-    { name: 'Blueberries', in_stock: false },
-    { name: 'Mayo', in_stock: false },
-    { name: 'Peanuts', in_stock: false },
-    { name: 'Almonds', in_stock: false },
-    { name: 'Walnuts', in_stock: false },
-    { name: 'Spinach', in_stock: false },
-    { name: 'Chia Seeds', in_stock: false },
-    { name: 'Hemp Seeds', in_stock: false },
-    { name: 'Pumpkin Seeds', in_stock: false },
-    { name: 'Turkey', in_stock: false },
-    { name: 'Feta Cheese', in_stock: false },
-    { name: 'Tomatoes', in_stock: false },
-    { name: 'Peppers', in_stock: false },
-    { name: 'Pickles', in_stock: false },
-    { name: 'Sliced Cheese', in_stock: false },
-    { name: 'Milk', in_stock: false }
+    { name: 'butter', in_stock: false },
+    { name: 'bagel', in_stock: false },
+    { name: 'sliced bread', in_stock: false },
+    { name: 'english muffin', in_stock: false },
+    { name: 'banana', in_stock: false },
+    { name: 'avocado', in_stock: false },
+    { name: 'orange', in_stock: false },
+    { name: 'mango', in_stock: false },
+    { name: 'raspberries', in_stock: false },
+    { name: 'strawberries', in_stock: false },
+    { name: 'blueberries', in_stock: false },
+    { name: 'mayo', in_stock: false },
+    { name: 'peanuts', in_stock: false },
+    { name: 'almonds', in_stock: false },
+    { name: 'walnuts', in_stock: false },
+    { name: 'spinach', in_stock: false },
+    { name: 'chia seeds', in_stock: false },
+    { name: 'hemp seeds', in_stock: false },
+    { name: 'pumpkin seeds', in_stock: false },
+    { name: 'turkey', in_stock: false },
+    { name: 'feta cheese', in_stock: false },
+    { name: 'tomatoes', in_stock: false },
+    { name: 'peppers', in_stock: false },
+    { name: 'pickles', in_stock: false },
+    { name: 'sliced cheese', in_stock: false },
+    { name: 'milk', in_stock: false }
   ])
 
 recipes = Recipe.create([
-    { name: 'Turkey Sandwich', ingredients: [ingr[2], ingr[11], ingr[19], ingr[24]] }
+    { name: 'turkey sandwich', ingredients: [ingr[2], ingr[11], ingr[19], ingr[24]] }
   ])
