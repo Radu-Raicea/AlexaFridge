@@ -30,6 +30,10 @@ ingredients = [
   'milk'
 ]
 
+recipes = [
+  'turkey sandwich'
+]
+
 model = AlexaGenerator::InteractionModel.build do |model|
   model.add_intent('AMAZON.NoIntent')
 
@@ -38,6 +42,15 @@ model = AlexaGenerator::InteractionModel.build do |model|
     intent.add_utterance_template('What can I cook')
     intent.add_utterance_template('What\'s on the menu')
     intent.add_utterance_template('What can I make')
+  end
+
+  model.add_intent(:IngredientsForIntent) do |intent|
+    intent.add_slot(:Recipe, 'AMAZON.LITERAL') do |slot|
+      slot.add_bindings(*recipes)
+    end
+    intent.add_utterance_template('What are the ingredients for {Recipe}')
+    intent.add_utterance_template('What do I need to make {Recipe}')
+    intent.add_utterance_template('What do I need for a {Recipe}')
   end
 
   model.add_intent(:BoughtIngredientIntent) do |intent|
@@ -76,6 +89,7 @@ end
 
 puts JSON.pretty_generate(model.intent_schema)
 puts model.sample_utterances(:MenuIntent)
+puts model.sample_utterances(:IngredientsForIntent)
 puts model.sample_utterances(:BoughtIngredientIntent)
 puts model.sample_utterances(:RanOutIngredientIntent)
 puts model.sample_utterances(:HaveIngredientIntent)

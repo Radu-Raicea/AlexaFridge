@@ -13,13 +13,15 @@ class SkillsController < ApplicationController
     when 'INTENT_REQUEST'
       case input.name
       when 'MenuIntent'
-        message, session_end = self.menu_message
+        message, session_end = MessageCreator.menu_message
+      when 'IngredientsForIntent'
+        message, session_end = MessageCreator.ingredients_for_message(input)
       when 'BoughtIngredientIntent'
-        message, session_end = self.bought_ingredient_message(input)
+        message, session_end = MessageCreator.bought_ingredient_message(input)
       when 'RanOutIngredientIntent'
-        message, session_end = self.ran_out_ingredient_message(input)
+        message, session_end = MessageCreator.ran_out_ingredient_message(input)
       when 'HaveIngredientIntent'
-        message, session_end = self.have_ingredient_message(input)
+        message, session_end = MessageCreator.have_ingredient_message(input)
       when 'CloseFridgeIntent', 'AMAZON.NoIntent'
         message, session_end = 'Closing fridge', true
       end
@@ -30,8 +32,10 @@ class SkillsController < ApplicationController
     output.add_speech(message) unless message.blank?
     render json: output.build_response(session_end)
   end
+end
 
-  def menu_message
+class MessageCreator
+  def self.menu_message
     recipes = RecipesController.menu
     if recipes.empty?
       return 'You don\'t have enough ingredients to make anything!', false
@@ -42,7 +46,32 @@ class SkillsController < ApplicationController
     end
   end
 
-  def bought_ingredient_message(input)
+  def self.ingredients_for_message(input)
+    name = input.slots['Recipe']['value']
+    recipe = Recipe.find_by(name: name)
+
+    if recipe.nil?
+      return "There is no recipe named #{name}.", false
+    elsif recipe.ingredients.empty?
+      return "There are no ingredients set for #{name}."
+    elsif recipe.ingredients.length == 1
+      return "The recipe for #{name} requires #{recipe.ingredients.first.name}."
+    elsif recipe.ingredients.length > 1
+      message = "The recipe for #{name} requires"
+      recipe.ingredients.each do |ingredient|
+        if ingredient != recipe.ingredients.last
+          message << " #{ingredient.name},"
+        else
+          message << " and #{ingredient.name}."
+        end
+      end
+      return message, false
+    else
+      return 'Something went wrong.', true
+    end
+  end
+
+  def self.bought_ingredient_message(input)
     name = input.slots['Ingredient']['value']
     ingredient = Ingredient.find_by(name: name)
 
@@ -58,7 +87,7 @@ class SkillsController < ApplicationController
     end
   end
 
-  def ran_out_ingredient_message(input)
+  def self.ran_out_ingredient_message(input)
     name = input.slots['Ingredient']['value']
     ingredient = Ingredient.find_by(name: name)
 
@@ -74,7 +103,7 @@ class SkillsController < ApplicationController
     end
   end
 
-  def have_ingredient_message(input)
+  def self.have_ingredient_message(input)
     name = input.slots['Ingredient']['value']
     ingredient = Ingredient.find_by(name: name)
 
