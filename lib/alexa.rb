@@ -3,12 +3,12 @@ require 'json'
 
 ingredients = [
   'butter',
-  'bagel',
+  'bagels',
   'sliced bread',
-  'english muffin',
-  'banana',
-  'avocado',
-  'orange',
+  'english muffins',
+  'bananas',
+  'avocados',
+  'oranges',
   'mango',
   'raspberries',
   'strawberries',
@@ -27,11 +27,34 @@ ingredients = [
   'peppers',
   'pickles',
   'sliced cheese',
-  'milk'
+  'milk',
+  'eggs',
+  'cream cheese',
+  'goat cheese',
+  'tomato sauce',
+  'frozen pizza',
+  'olive oil',
+  'vinegar',
+  'jam',
+  'frozen croissant',
+  'spaghetti',
+  'farfalle',
+  'peanut butter'
 ]
 
 recipes = [
-  'turkey sandwich'
+  'turkey sandwich',
+  'avocado salad',
+  'feta salad',
+  'grilled cheese',
+  'spaghetti',
+  'farfalle pasta',
+  'pizza',
+  'avocado sandwich',
+  'egg mcmuffin',
+  'peanut butter jelly',
+  'cream cheese toast',
+  'egg croissant'
 ]
 
 model = AlexaGenerator::InteractionModel.build do |model|
