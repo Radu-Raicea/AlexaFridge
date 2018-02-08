@@ -1,25 +1,43 @@
-<div class="content">
-  <h1>Recipes</h1>
-
-  <%= link_to 'New recipe', new_recipe_path %>
-
-  <div class="tableContent">
-    <table id="recipes" class="display" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th width="70%">Name</th>
-          <th></th>
-        </tr>
-      </thead>
-     
-      <% @recipes.each do |recipe| %>
-        <tbody>
-          <tr>
-            <td><%= link_to recipe.name.capitalize, recipe_path(recipe) %></td>
-            <td><%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
-  </div>
+<div class="container-fluid">
+    <div id="title-bottom-bump" class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center"><h1 class="display-1">Recipes</h1></div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div id="navbar-bottom-bump" class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">Home</button>'.html_safe, root_path %>
+            <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">Ingredients</button>'.html_safe, ingredients_path %>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <div>
+                <table id="table-borderless" class="table">
+                    <thead>
+                        <tr style="border-top: hidden;">
+                            <th>Name</th>
+                            <th><%= link_to '<button type="button" id="btn-sm" class="btn btn-dark btn-sm">New</button>'.html_safe, new_recipe_path %></th>
+                        </tr>
+                    </thead>
+               
+                    <% @recipes.each do |recipe| %>
+                    <tbody>
+                        <tr>
+                            <td><%= link_to recipe.name.capitalize, recipe_path(recipe) %></td>
+                            <td>
+                                <%= link_to '<button type="button" id="btn-sm" class="btn btn-dark btn-sm">Edit</button>'.html_safe, edit_recipe_path(recipe) %>
+                                <%= link_to '<button type="button" id="btn-sm" class="btn btn-dark btn-sm">Delete</button>'.html_safe, recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
 </div>

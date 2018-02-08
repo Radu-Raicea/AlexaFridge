@@ -19,7 +19,7 @@
     <%= form.text_field :name %>
   </p>
 
-  <div class="formBlock">
+  <div>
     <h2>Ingredients</h2>
 
     <% @ingredients.each do |ingredient| %>
@@ -30,7 +30,9 @@
   </div>
 
   <p>
-    <%= form.submit %>
+    <br>
+    <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">back</button>'.html_safe, recipes_path %>
+    <%= form.button :submit, { id: 'btn-sm-inverse', class: 'btn btn-outline-dark btn-sm' } %>
   </p>
  
 <% end %>

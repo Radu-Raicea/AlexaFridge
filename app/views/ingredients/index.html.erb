@@ -1,34 +1,52 @@
-<div class="content">
-  <h1>Ingredients</h1>
+<div class="container-fluid">
+    <div id="title-bottom-bump" class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center"><h1 class="display-1">Ingredients</h1></div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div id="navbar-bottom-bump" class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">Home</button>'.html_safe, root_path %>
+            <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">Recipes</button>'.html_safe, recipes_path %>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <div>
+                <table id="table-borderless" class="table">
+                    <thead>
+                        <tr style="border-top: hidden;">
+                            <th>Name</th>
+                            <th>In stock</th>
+                            <th><%= link_to '<button type="button" id="btn-sm" class="btn btn-dark btn-sm">New</button>'.html_safe, new_ingredient_path %></th>
+                        </tr>
+                    </thead>
+               
+                    <% @ingredients.each do |ingredient| %>
+                    <tbody>
+                        <tr>
+                            <td><%= link_to ingredient.name.capitalize, ingredient_path(ingredient) %></td>
+                            <td>
+                                <% if ingredient.in_stock %>
+                                Yes
+                                <% else %>
+                                No
+                                <% end %>
+                            </td>
+                            <td>
+                                <%= link_to '<button type="button" id="btn-sm" class="btn btn-dark btn-sm">Edit</button>'.html_safe, edit_ingredient_path(ingredient) %>
+                                <%= link_to '<button type="button" id="btn-sm" class="btn btn-dark btn-sm">Delete</button>'.html_safe, ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
 
-  <%= link_to 'New ingredient', new_ingredient_path %>
-
-  <div class="tableContent">
-    <table id="ingredients" class="display" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th width="60%">Name</th>
-          <th width="15%">In Stock</th>
-          <th></th>
-        </tr>
-      </thead>
-     
-      <% @ingredients.each do |ingredient| %>
-        <tbody>
-          <tr>
-            <td><%= link_to ingredient.name.capitalize, ingredient_path(ingredient) %></td>
-            <td>
-              <% if ingredient.in_stock %>
-                Yes
-              <% else %>
-                No
-              <% end %>
-            </td>
-
-            <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %> | <%= link_to 'Delete', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
-  </div>
 </div>

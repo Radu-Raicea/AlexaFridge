@@ -33,10 +33,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'jquery-rails'
 
 gem 'alexa_generator'
 gem 'alexa_rubykit'
+
+gem 'bootstrap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

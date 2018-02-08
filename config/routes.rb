@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+
   resources :recipes
   resources :ingredients
 
-  post '/' => 'skills#root', :as => :root
+  post '/alexa' => 'skills#root'
 end

@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center"><%= image_tag 'side_logo', width: 500 %></div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <%= link_to '<button type="button" id="btn" class="btn btn-dark">Recipes</button>'.html_safe, recipes_path %>
+            <%= link_to '<button type="button" id="btn" class="btn btn-dark">Ingredients</button>'.html_safe, ingredients_path %>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

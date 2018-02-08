@@ -1,16 +1,29 @@
-<div class="content">
-  <h1><%= @ingredient.name.capitalize %></h1>
-
-  <p>
-    <strong>In Stock:</strong>
-
-    <% if @ingredient.in_stock %>
-      Yes
-    <% else %>
-      No
-    <% end %>
-  </p>
-
-  <%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-  <%= link_to 'Back', ingredients_path %>
+<div class="container-fluid">
+    <div id="title-bottom-bump" class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center"><h1 class="display-3"><%= @ingredient.name.capitalize %></h1></div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div id="navbar-bottom-bump" class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">Back</button>'.html_safe, ingredients_path %>
+            <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">Edit</button>'.html_safe, edit_ingredient_path(@ingredient) %>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <div>
+                <strong>In Stock:</strong>
+                <% if @ingredient.in_stock %>
+                  Yes
+                <% else %>
+                  No
+                <% end %>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
 </div>

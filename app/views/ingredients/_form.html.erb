@@ -20,12 +20,14 @@
   </p>
 
   <p>
-    <%= form.label :in_stock %>
+    <%= form.label :in_stock %>:
     <%= form.check_box :in_stock %>
   </p>
  
   <p>
-    <%= form.submit %>
+    <br>
+    <%= link_to '<button type="button" id="btn-sm-inverse" class="btn btn-outline-dark btn-sm">back</button>'.html_safe, ingredients_path %>
+    <%= form.button :submit, { id: 'btn-sm-inverse', class: 'btn btn-outline-dark btn-sm' } %>
   </p>
  
 <% end %>

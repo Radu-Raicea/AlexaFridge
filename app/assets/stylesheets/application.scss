@@ -11,7 +11,45 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require dataTables/extras/dataTables.responsive
- *= require dataTables/jquery.dataTables
  *= require_self
  */
+ 
+@import "bootstrap";
+
+.container-fluid {
+    margin-top: 10vh;
+}
+
+a {
+    color: #000000;
+}
+
+a:hover {
+    color: #5b5b5b;
+}
+
+#btn-sm {
+    background-color: #000000;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
+    height: 29px;
+}
+
+#btn-sm-inverse {
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    height: 29px;
+}
+
+#btn-sm-inverse:hover {
+    background-color: #000000;
+}
+
+#title-bottom-bump {
+    margin-bottom: 10px;
+}
+
+#navbar-bottom-bump {
+    margin-bottom: 35px;
+}
