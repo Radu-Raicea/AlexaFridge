@@ -1,10 +1,7 @@
 <p align="center">
-    <img src="app/assets/images/side_logo.png" alt="logo" width="800px">
+    <img src="app/assets/images/side_logo.png" alt="logo" width="400px">
 </p>
-<p align="center">
-    Alexa Fridge is an app that suggests what to cook based on what ingredients you currently have.
-</p>
-
+Alexa Fridge is an app that suggests what to cook based on what ingredients you currently have.
 
 ### Requirements
 
