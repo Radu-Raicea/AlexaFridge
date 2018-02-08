@@ -1,24 +1,31 @@
-# README
+<p align="center">
+    <img src="app/assets/images/side_logo.png" alt="logo" width="800px">
+</p>
+<p align="center">
+    Alexa Fridge is an app that suggests what to cook based on what ingredients you currently have.
+</p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Requirements
 
-* Ruby version
+* Ruby 2.3.3+
 
-* System dependencies
+* Rails 5.1.4+
 
-* Configuration
+* Bundler
 
-* Database creation
+* ngrok
 
-* Database initialization
+### Running the app
 
-* How to run the test suite
+1. Install dependencies `bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+2. Migrate the database `rails db:migrate`
 
-* Deployment instructions
+3. Seed the database `rails db:seed`
 
-* ...
+4. Run ngrok `ngrok http 3000`
+
+5. Copy the https link on the Amazon Developers website for your Skill
+
+6. Run the server `rails server`

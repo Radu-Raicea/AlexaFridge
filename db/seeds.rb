@@ -8,13 +8,13 @@
 
 ingr = Ingredient.create([
     { name: 'butter', in_stock: false },
-    { name: 'bagels', in_stock: false },
+    { name: 'bagel', in_stock: false },
     { name: 'sliced bread', in_stock: false },
     { name: 'english muffins', in_stock: false },
-    { name: 'bananas', in_stock: false },
-    { name: 'avocados', in_stock: false },
+    { name: 'banana', in_stock: false },
+    { name: 'avocado', in_stock: false },
     { name: 'oranges', in_stock: false },
-    { name: 'mangos', in_stock: false },
+    { name: 'mango', in_stock: false },
     { name: 'raspberries', in_stock: false },
     { name: 'strawberries', in_stock: false },
     { name: 'blueberries', in_stock: false },
@@ -32,7 +32,8 @@ ingr = Ingredient.create([
     { name: 'peppers', in_stock: false },
     { name: 'pickles', in_stock: false },
     { name: 'sliced cheese', in_stock: false },
-    { name: 'milk', in_stock: false }
+    { name: 'milk', in_stock: false },
+    { name: 'eggs', in_stock: false }
   ])
 
 recipes = Recipe.create([
